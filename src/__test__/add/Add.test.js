@@ -1,5 +1,5 @@
 import React from 'react';
-import Add from '../Add';
+import Add from '../../components/add/Add';
 // import { render } from '@testing-library/react';
 import ReactDOM from 'react-dom';
 

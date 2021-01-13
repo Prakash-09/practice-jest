@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Congrats from '../../../components/functionalComponents/jotto/Congrats';
+import Congrats from '../../../components/udemyComponents/jotto/Congrats';
 import { findTestAttr, checkProps } from '../../../utils/TestUtlis';
 // import checkPropTypes from 'check-prop-types';
 

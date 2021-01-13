@@ -1,7 +1,15 @@
 import checkPropTypes from 'check-prop-types';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from '../components/udemyComponents/jotto/reducers/index';
+import { middlewares } from '../components/udemyComponents/jotto/configureStore';
 
-export const findTestAttr = (wrapped, val) => {
-    return wrapped.find(`[data-test='${val}']`);
+export const storeFactory = ( initialState ) => {
+    const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
+    return createStoreWithMiddleware(rootReducer, initialState);
+}
+
+export const findTestAttr = (wrapper, val) => {
+    return wrapper.find(`[data-test='${val}']`);
 }
 
 export const checkProps = (component, conformingProps) => {
