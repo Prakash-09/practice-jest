@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-// import { Provider } from 'react-redux';
-// import store from './components/udemyComponents/jotto/configureStore';
+import { Provider } from 'react-redux';
+import store from './components/udemyComponents/jotto/configureStore';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
