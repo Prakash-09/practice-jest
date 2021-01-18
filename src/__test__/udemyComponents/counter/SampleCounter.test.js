@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SampleCounter from '../../../components/functionalComponents/counter/SampleCounter';
+import SampleCounter from '../../../components/udemyComponents/counter/SampleCounter';
 
 
 

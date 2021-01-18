@@ -12,9 +12,6 @@ export default class SampleForm extends React.Component {
             firstName: '',
             lastName: '',
             phNumber: '',
-            telugu: false,
-            english: false,
-            hindi: false,
             dob: '',
             gender: '',
             interested: '',
@@ -24,7 +21,6 @@ export default class SampleForm extends React.Component {
     handleChangeInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
-        console.log(name, value)
         if(name === 'male'){
             this.setState({gender: 'male'})
         }else if(name === 'female'){
@@ -36,59 +32,50 @@ export default class SampleForm extends React.Component {
         }
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.setState({ 
+            layout: 1
+        })
+    }
+
     render() {
-        const { layout, firstName, lastName, phNumber, dob, gender, telugu, english, hindi, interested } = this.state;
+        const { layout, firstName, lastName, phNumber, dob, gender, interested } = this.state;
         return (
-            <div className="p-4">
+            <div className="p-4" data-test="sample-form-component">
                 {layout === 0 &&
                     <form >
                         <Row xs="1" md="2" className="m-0 text-center">
                             <Col className="pr-2 my-3">
                                 <h6 className="text-left">First Name</h6>
-                                <input type="text" name="firstName" id='firstNme' className='input-field' onChange={this.handleChangeInput} value={firstName} />
+                                <input type="text" name="firstName" data-test='firstName' className='input-field' onChange={this.handleChangeInput} value={firstName} />
                             </Col>
                             <Col className="pr-2 my-3">
                                 <h6 className="text-left">Last Name</h6>
-                                <input type="text" name="lastName" id='lastName' className='input-field' onChange={this.handleChangeInput} value={lastName} />
+                                <input type="text" name="lastName" data-test='lastName' className='input-field' onChange={this.handleChangeInput} value={lastName} />
                             </Col>
                             <Col className="pr-2 my-3">
                                 <h6 className="text-left">Mobile number</h6>
-                                <input type="number" name="phNumber" id='phNumber' className='input-field' onChange={this.handleChangeInput} value={phNumber} />
+                                <input type="number" name="phNumber" data-test='phNumber' className='input-field' onChange={this.handleChangeInput} value={phNumber} />
                             </Col>
                             <Col className="pr-2 my-3">
                                 <h6 className="text-left">Date of birth</h6>
-                                <input type="date" name="dob" id='dob' className='input-field' onChange={this.handleChangeInput} value={dob} />
+                                <input type="date" name="dob" data-test='dob' className='input-field' onChange={this.handleChangeInput} value={dob} />
                             </Col>
                             <Col className="pr-2 my-3">
                                 <h6 className="text-left">Gender</h6>
                                 <Row className="m-0">
                                     <Col className="p-0 text-left">
-                                        <input type='radio' name="male" id='male' className='radio-btn' value={gender} onChange={this.handleChangeInput} checked={gender === 'male'} /><span>Male</span>
+                                        <input type='radio' name="male" data-test='male' className='radio-btn' value={gender} onChange={this.handleChangeInput} checked={gender === 'male'} /><span>Male</span>
                                     </Col>
                                     <Col className="p-0 text-left">
-                                        <input type='radio' name="female" id='female' className='radio-btn' value={gender} onChange={this.handleChangeInput} checked={gender === 'female'} /><span>Female</span>
+                                        <input type='radio' name="female" data-test='female' className='radio-btn' value={gender} onChange={this.handleChangeInput} checked={gender === 'female'} /><span>Female</span>
                                     </Col>
                                 </Row>
                             </Col>
-                            <Col className="pr-2 my-3">
-                                <h6 className="text-left">Languages</h6>
-                                <Row className="m-0">
-                                    <Col className="p-0 text-left">
-                                        <input type='checkbox' name="telugu" id='telugu' className='check-box' value={telugu} /><span>Telugu</span>
-                                    </Col>
-                                    <Col className="p-0 text-center">
-                                        <input type='checkbox' name="english" id='english' className='check-box' value={english} /><span>English</span>
-                                    </Col>
-                                    <Col className="p-0 text-right">
-                                        <input type='checkbox' name="hindi" id='hindi' className='check-box' value={hindi} /><span>Hindi</span>
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
-                        <Row className='m-0 text-center'>
                             <Col className="pr-2 my-3">
                                 <h6 className="text-left">Interested</h6>
-                                <select name='interested' id="interested" className="input-field-select" value={interested} onChange={this.handleChangeInput}>
+                                <select name='interested' data-test="interested" className="input-field-select" value={interested} onChange={this.handleChangeInput}>
                                     <option> </option>
                                     <option>Education</option>
                                     <option>Sports</option>
@@ -99,10 +86,13 @@ export default class SampleForm extends React.Component {
                         </Row>
                         <Row className="m-0">
                             <Col className="px-2 my-3 text-center">
-                                <Button variant="primary" size="sm" className="w-100">Get preview</Button>
+                                <Button variant="primary" data-test="submitButton" size="sm" className="w-100" onClick={this.handleSubmit}>Submit</Button>
                             </Col>
                         </Row>
                     </form>
+                }
+                {layout === 1 &&
+                    <h4 data-test="form-submitted">Form has been submitted</h4>
                 }
             </div>
         )

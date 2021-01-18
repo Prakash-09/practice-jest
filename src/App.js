@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
-import Parent from './components/udemyComponents/jotto/parentComponent/Parent'
-import { Provider } from 'react-redux';
-import store from './components/udemyComponents/jotto/configureStore';
+// import Parent from './components/udemyComponents/jotto/parentComponent/Parent'
+// import { Provider } from 'react-redux';
+// import store from './components/udemyComponents/jotto/configureStore';
+
 // import Congrats from './components/udemyComponents/jotto/Congrats';
 // import GuessedWords from './components/udemyComponents/jotto/GuessedWords';
 // import { getSecretWord } from './components/udemyComponents/jotto/actions/index';
 // import { connect } from 'react-redux';
 // import Input from './components/udemyComponents/jotto/Input';
 
-// // import SampleForm from './components/practice/SampleForm';
+import SampleForm from './components/practice/SampleForm';
+import ApiCall from './components/apiCall/ApiCall';
 
 // // import Sum from './components/sum/Sum';
 // // import Text from './components/displayText/Text';
@@ -31,7 +33,7 @@ import store from './components/udemyComponents/jotto/configureStore';
 //         <Input />
 //         <GuessedWords guessedWords={this.props.guessedWords} />
 
-//         {/* <SampleForm /> */}
+//         <SampleForm /> 
 //         {/* <Sum /> */}
 //         {/* <Text label='display something' /> */}
 //         {/* <Add x="1" y="2" /> */}
@@ -52,9 +54,11 @@ import store from './components/udemyComponents/jotto/configureStore';
 function App() {
   return (
     <div>
-      <Provider store={store}>
+      {/* <Provider store={store}>
         <Parent />
-      </Provider>
+      </Provider> */}
+      <SampleForm />
+      <ApiCall />
     </div>
   );
 }
